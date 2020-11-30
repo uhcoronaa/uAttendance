@@ -1,0 +1,20 @@
+<nav class="navbar navbar-dark navbar-expand-lg bg-primary" id="mainNav">
+    <div class="container"><a class="navbar-brand" href="">uAttendance</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul *ngIf="!session.session" class="nav navbar-nav ml-auto text-uppercase">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#services">Servicios</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#team">Equipo</a></li>
+                <li  class="nav-item"><a class="nav-link js-scroll-trigger" href="login">Login</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="signup">Signup</a></li>
+            </ul>
+            <ul *ngIf="session.session" class="nav navbar-nav ml-auto text-uppercase">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="students">Estudiantes</a></li>
+                <li  class="nav-item"><a class="nav-link js-scroll-trigger" href="groups">Grupos</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="attendance">Asistencia</a></li>
+                <li (click)="logout()" class="nav-item"><a class="nav-link js-scroll-trigger">Log Out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<router-outlet></router-outlet>

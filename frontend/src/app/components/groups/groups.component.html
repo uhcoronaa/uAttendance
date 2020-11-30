@@ -1,0 +1,49 @@
+<div class="background bg-primary"></div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col col-lg-8 col-12">
+            <div class="card shadow-lg o-hidden border-0 my-5">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Listado de Fotos Grupales</h4>
+                    <hr>
+                    <div class="row">
+                        <div *ngFor="let group of groups" class="col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12" style="min-width:300px;">
+                            <div class="card" style="width:100%;"><img class="img-fluid card-img-top" style="height:200px;" src="{{group.urlimage}}">
+                                <div class="card-body">
+                                    <h5 class="text-center">Asistencia dia: {{group.identifier}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-lg-4 col-12">
+            <div class="card shadow-lg o-hidden border-0 my-5">
+                <div class="card-body">
+                    <div>
+                        <div class="text-center">
+                            <h4 class="text-dark mb-4">Nueva Foto Grupal</h4>
+                        </div>
+                        <form class="user">
+                            <mat-form-field class="form-user">
+                                <input matInput [formControl]="idFC" type="text" id="InputId" aria-describedby="idHelp" placeholder="Identificador" name="identificador">
+                                <mat-error *ngIf="idFC.hasError('required')">
+                                    Identificador es <strong>Obligatorio</strong>
+                                </mat-error>
+                            </mat-form-field>
+                            <ngx-dropzone class="mt-4" [multiple]="false" (change)="onSelect($event)">
+                                <ngx-dropzone-label>Arrastra la Imagen o has Click!</ngx-dropzone-label>
+                                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" [removable]="true" (removed)="onRemove(f)" *ngFor="let f of files" [file]="f">
+                                    <!--ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label-->
+                                </ngx-dropzone-image-preview>
+                            </ngx-dropzone>
+                            <button class="btn btn-primary btn-block text-white btn-user mt-4" (click)="register()" type="submit" style="border-radius: 10rem;">Registrar</button>
+                            <hr>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

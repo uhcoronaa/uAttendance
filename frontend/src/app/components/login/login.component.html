@@ -1,0 +1,78 @@
+<div class="background bg-primary"></div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card shadow-lg o-hidden border-0 my-5">
+                <div class="card-body p-0">
+                    <div class="row">
+                        <div class="col d-none justify-content-center align-items-center d-lg-flex">
+                            <h1 class="text-center" style="font-size: 55px;">uAttendance</h1>
+                        </div>
+                        <div class="col col-lg-6">
+                            <div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li (click)="stateCamera = false" class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Credenciales</a></li>
+                                    <li (click)="stateCamera = true" class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Facial</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" role="tabpanel" id="tab-1">
+                                        <div class="p-5">
+                                            <div class="text-center">
+                                                <h4 class="text-dark mb-4">Bienvenido!</h4>
+                                            </div>
+                                            <form class="user" [formGroup]="loginFG">
+                                                <!--div class="form-group"-->
+                                                <mat-form-field class="form-user">
+                                                    <mat-label>Usuario</mat-label>
+                                                    <input matInput formControlName="username" type="text" id="InputUser" aria-describedby="userHelp" placeholder="Usuario..." name="user">
+                                                    <mat-error *ngIf="userFC.hasError('required')">
+                                                        Usuario es <strong>Obligatorio</strong>
+                                                    </mat-error>
+                                                </mat-form-field>
+
+                                                <!--/div-->
+                                                <!--div class="form-group"-->
+                                                <mat-form-field class="form-user">
+                                                    <mat-label>Contraseña</mat-label>
+                                                    <input matInput formControlName="password" type="password" id="InputPassword" placeholder="Contraseña" name="password">
+                                                    <mat-error *ngIf="passwordFC.hasError('required')">
+                                                        Contraseña es <strong>Obligatoria</strong>
+                                                    </mat-error>
+                                                </mat-form-field>
+                                                <!--/div-->
+                                                <button (click)="loginPerUser()" class="btn btn-primary btn-block text-white btn-user form-user form-user-btn" type="submit">Login</button>
+                                                <hr>
+                                                <hr>
+                                            </form>
+                                            <div class="text-center"><a class="small" href="/signup">Crear una Cuenta</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" role="tabpanel" id="tab-2">
+                                        <div class="p-5">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h4 class="card-title text-center align-content-center">Mi Camara</h4>
+                                                    <webcam *ngIf="stateCamera" [width]="300" [trigger]="triggerObservable" (imageCapture)="handleImage($event);" (initError)="handleInitError($event)"></webcam>
+                                                    
+                                                </div>
+                                            </div>
+                                            <!--div class="card mt-3">
+                                                <div class="card-body">
+                                                    <h4 class="card-title text-center">Title</h4>
+                                                </div>
+                                            </div-->
+                                            <button (click)="loginPerPhoto()" class="btn btn-primary btn-block text-white btn-user mt-4" type="submit" style="border-radius: 10rem;">Login</button>
+                                            <hr>
+                                            <hr>
+                                            <div class="text-center"><a class="small" href="register.html">Crear una Cuenta</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
